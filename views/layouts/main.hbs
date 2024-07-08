@@ -67,20 +67,31 @@
                 color: var(--primary-text-colour)
             }
 
-            .input-group{
-                display: flex;
-            }
-
-            .input-group button{
-                font-size: .75rem;
-            }
-
-            img{
+            .error:not(button),
+            .success:not(button),
+            .info,
+            .warning {
+                padding: 1rem;
+                border-radius: 5px;
+                text-align: center;
                 margin-bottom: 1rem;
             }
 
-            section{
+            .error {
+                background-color: var(--error-colour);
+                color: var(--error-text-colour);
+            }
+
+            img {
+                margin-bottom: 1rem;
+            }
+
+            section {
                 margin-top: 3rem;
+            }
+
+            .d-none{
+                display: none;
             }
         </style>
     </head>

@@ -1,9 +1,10 @@
+<div class="error d-none" id="error"></div>
+
 <div>
     <p>Enter the recap URL below to extract caption winners and division placements.</p>
 
     <label for="recap">Recap URL</label>
-    <input id="recap" />
-</div>
+    <input id="recap" placeholder="Paste Recap URL Here"/>
 </div>
 
 <section>
@@ -19,14 +20,22 @@
 
 
 <script>
+    const errorEl = document.getElementById("error");
     const regex = /(\{?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}?)/g;
 
+    function showError(error){
+        errorEl.innerHTML = error;
+        errorEl.classList.remove("d-none");
+    }
+
     document.getElementById("recap").addEventListener("paste", (e) => {
+        errorEl.classList.add("d-none");
         let recap = e.clipboardData.getData("text");
         const matches = regex.exec(recap);
         console.log(matches);
 
         if (!matches) {
+            showError("Hmm... that URL doesn't look correct. Please check it and try again. The correct format should be along the lines of https://recaps.competitionsuite.com/&lt;numbers and letters&gt;.htm")
             return;
         }
 
