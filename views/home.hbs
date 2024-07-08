@@ -22,17 +22,16 @@
 <script>
     const errorEl = document.getElementById("error");
     const regex = /(\{?[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}\}?)/g;
+    let prevValue = "";
 
     function showError(error){
         errorEl.innerHTML = error;
         errorEl.classList.remove("d-none");
     }
 
-    document.getElementById("recap").addEventListener("paste", (e) => {
+    function handleRecap(recap){
         errorEl.classList.add("d-none");
-        let recap = e.clipboardData.getData("text");
         const matches = regex.exec(recap);
-        console.log(matches);
 
         if (!matches) {
             showError("Hmm... that URL doesn't look correct. Please check it and try again. The correct format should be along the lines of https://recaps.competitionsuite.com/&lt;numbers and letters&gt;.htm")
@@ -40,5 +39,12 @@
         }
 
         window.location.href = matches[0];
-    });
+    }
+
+    const recapEl = document.getElementById("recap");
+    recapEl.addEventListener("input", (e) => {
+        if(Math.abs(recapEl.value.length - prevValue.length) > 5 && recapEl.value.trim() != ""){
+            handleRecap(recapEl.value);
+        }
+    })
 </script>
