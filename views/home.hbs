@@ -2,10 +2,7 @@
     <p>Enter the recap URL below to extract caption winners and division placements.</p>
 
     <label for="recap">Recap URL</label>
-
-    <div class="input-group">
         <input id="recap" />
-        <button class="primary" id="extract">Extract</button>
     </div>
 </div>
 
@@ -22,8 +19,8 @@
 
 
 <script>
-    document.getElementById("extract").addEventListener("click", () => {
-        let recap = document.getElementById("recap").value;
+    document.getElementById("recap").addEventListener("paste", (e) => {
+        let recap = e.clipboardData.getData("text");
         recap = recap.replace("https://recaps.competitionsuite.com/", "");
         recap = recap.split(".")[0];
         window.location.href = recap;
