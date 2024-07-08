@@ -1,0 +1,19 @@
+{{#each results }}
+<section>
+    <details {{#eq @index 0}}open{{/eq}}>
+        <summary>
+            <h2>{{@key}}</h2>
+        </summary>
+
+        <h3>Caption Awards</h3>
+        {{#each this.CaptionWinners}}
+        <p>{{@key}}: <strong>{{this}}</strong></p>
+        {{/each}}
+
+        <h3 class="mt">Placings</h3>
+        {{#each this.Bands}}
+        <p>In {{ordinal this.Rank}} place, with a score of {{this.Score}}, <strong>{{this.Name}}</strong>!</p>
+        {{/each}}
+    </details>
+</section>
+{{/each}}

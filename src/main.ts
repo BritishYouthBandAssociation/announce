@@ -4,7 +4,29 @@ import { engine } from 'express-handlebars';
 
 const app = express();
 
-app.engine("hbs", engine({ extname: ".hbs" }));
+const ordinalRules = new Intl.PluralRules('en', { type: 'ordinal' });
+
+app.engine("hbs", engine({
+    extname: ".hbs", helpers: {
+        ordinal: (number: number) => {
+            const category = ordinalRules.select(number);
+            if (category == "one") {
+                return `${number}st`;
+            }
+
+            if (category == "two") {
+                return `${number}nd`;
+            }
+
+            if (category == "few") {
+                return `${number}rd`;
+            }
+
+            return `${number}th`;
+        },
+        eq: (val1: any, val2: any, opts: Handlebars.HelperOptions) => val1 == val2 ? opts.fn(this) : opts.inverse(this)
+    }
+}));
 app.set("view engine", "hbs");
 
 app.use(express.static("public"));
@@ -63,31 +85,42 @@ app.get("/:id", async (req, res) => {
         if (el.DivisionName in divisions) {
             let inserted = false;
 
-            for(let i = 0; i < divisions[el.DivisionName].Bands.length; i++){
-                if(el.Rank < divisions[el.DivisionName].Bands[i].Rank){
+            for (let i = 0; i < divisions[el.DivisionName].Bands.length; i++) {
+                if (el.Rank > divisions[el.DivisionName].Bands[i].Rank) {
                     divisions[el.DivisionName].Bands.splice(i, 0, bandResult);
                     inserted = true;
                     break;
                 }
             }
 
-            if(!inserted){
+            if (!inserted) {
                 divisions[el.DivisionName].Bands.push(bandResult);
             }
         } else {
             divisions[el.DivisionName] = { Bands: [bandResult], CaptionWinners: {} };
         }
 
+        if (Object.keys(divisions[el.DivisionName].CaptionWinners).length == 0) {
+            el.Categories.forEach(cat => {
+                cat.Captions.forEach(cap => {
+                    divisions[el.DivisionName].CaptionWinners[cap.Name] = "";
+                })
+            });
+        }
+
         el.Categories.forEach(cat => {
             cat.Captions.forEach(cap => {
-                if(cap.Rank == 1){
+                if (cap.Rank == 1) {
                     divisions[el.DivisionName].CaptionWinners[cap.Name] = el.GroupName;
                 }
             })
         });
     });
 
-    return res.json(divisions);
+    res.render("results", {
+        title: "Results",
+        results: divisions
+    });
 });
 
 //final catch-all 404
