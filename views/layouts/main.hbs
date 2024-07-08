@@ -1,18 +1,46 @@
-
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <link rel="icon" href="https://cdn.byba.online/favicon.ico">
-    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.byba.online/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.byba.online/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.byba.online/favicon-16x16.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.byba.online/core.css" />
-    <link rel="stylesheet" href="https://cdn.byba.online/branding.css" />
-    <title>{{title}} | British Youth Band Association</title>
-  </head>
-  <body>
-    {{{body}}}
-  </body>
+
+    <head>
+        <meta charset="UTF-8">
+        <link rel="icon" href="https://cdn.byba.online/favicon.ico">
+        <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.byba.online/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.byba.online/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.byba.online/favicon-16x16.png">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="https://cdn.byba.online/core.css" />
+        <link rel="stylesheet" href="https://cdn.byba.online/branding.css" />
+        <title>{{title}} | British Youth Band Association</title>
+        <style>
+            header {
+                background-color: var(--primary-colour);
+                color: var(--primary-text-colour);
+                margin-bottom: 2rem;
+                text-align: center;
+            }
+
+            h6,
+            h5,
+            h4,
+            h3,
+            h2,
+            h1 {
+                margin-top: 0;
+                margin-bottom: .5rem;
+                font-weight: 500
+            }
+        </style>
+    </head>
+
+    <body>
+        <header>
+            <div class="container">
+                <h1>BYBA Result Viewer</h1>
+            </div>
+        </header>
+        <main class="container">
+            {{{body}}}
+        </main>
+    </body>
+
 </html>
