@@ -8,7 +8,9 @@ app.engine("hbs", engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
 app.get("/", (_, res) => {
-    res.send("hi");
+    res.render("home", {
+        title: "Results Viewer"
+    });
 });
 
 //final catch-all 404

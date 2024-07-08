@@ -29,13 +29,58 @@
                 margin-bottom: .5rem;
                 font-weight: 500
             }
+
+            label {
+                margin-left: .75rem;
+                margin-bottom: .3rem;
+                display: block;
+                text-align: start
+            }
+
+            input:not([type=checkbox]),
+            textarea,
+            select {
+                display: block;
+                width: 100%;
+                padding: .5rem .75rem;
+                font-size: 1rem;
+                border-radius: 10px;
+                margin: .1rem 0;
+                border-style: solid;
+                border-color: #0000001a
+            }
+
+            button {
+                padding: .5rem 1rem;
+                font-size: 1.25rem;
+                border-radius: 10px;
+                border-color: #0000001a;
+                cursor: pointer
+            }
+
+            button:active {
+                background-image: linear-gradient(#fff3 0, #fff3 0)
+            }
+
+            button.primary {
+                background-color: var(--primary-colour);
+                color: var(--primary-text-colour)
+            }
+
+            .input-group{
+                display: flex;
+            }
+
+            .input-group button{
+                font-size: .75rem;
+            }
         </style>
     </head>
 
     <body>
         <header>
             <div class="container">
-                <h1>BYBA Result Viewer</h1>
+                <h1>BYBA Results Viewer</h1>
             </div>
         </header>
         <main class="container">
