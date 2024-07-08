@@ -7,6 +7,8 @@ const app = express();
 app.engine("hbs", engine({ extname: ".hbs" }));
 app.set("view engine", "hbs");
 
+app.use(express.static("public"));
+
 app.get("/", (_, res) => {
     res.render("home", {
         title: "Results Viewer"

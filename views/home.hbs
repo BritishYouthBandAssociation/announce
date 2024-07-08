@@ -1,10 +1,31 @@
-<form>
+<div>
     <p>Enter the recap URL below to extract caption winners and division placements.</p>
 
     <label for="recap">Recap URL</label>
 
     <div class="input-group">
         <input id="recap" />
-        <button class="primary">Extract</button>
+        <button class="primary" id="extract">Extract</button>
     </div>
-</form>
+</div>
+
+<section>
+    <h2>How Do I Use This Page?</h2>
+    <p>In order for the system to be able to access the recaps, you need to enable <strong>Programmatic Access</strong>. This is different to releasing the scores to bands and to the public and so we can release it this way before the scores are announced.</p>
+    <p>Programmatic Access can be enabled by <a href="https://competitionsuite.com/overview/" target="_blank">logging into CompetitionSuite</a> and navigating to the event.</p>
+    <p>Once there, navigate to the <strong>Score Release</strong> tab:</p>
+    <img src="/score-release-tab.png" />
+    <p><strong>For each class displayed on this page</strong>, make sure that the Programmatic - API box says "Allow Access". <strong>You must do this for each class, otherwise this site can only read the classes you select!</strong></p>
+    <img src="/programmatic.png" />
+    <p>Once all the boxes have been selected, copy the <strong>Public Recap URL</strong> and paste it in the box above</p>
+</section>
+
+
+<script>
+    document.getElementById("extract").addEventListener("click", () => {
+        let recap = document.getElementById("recap").value;
+        recap = recap.replace("https://recaps.competitionsuite.com/", "");
+        recap = recap.split(".")[0];
+        window.location.href = recap;
+    });
+</script>
