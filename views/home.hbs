@@ -46,5 +46,9 @@
         if(Math.abs(recapEl.value.length - prevValue.length) > 5 && recapEl.value.trim() != ""){
             handleRecap(recapEl.value);
         }
-    })
+    });
+
+    {{#if error}}
+        showError('{{error}}');
+    {{/if}}
 </script>

@@ -32,9 +32,10 @@ app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "../views"));
 app.use(express.static(path.join(__dirname, "../public")));
 
-app.get("/", (_, res) => {
+app.get("/", (req, res) => {
     res.render("home", {
-        title: "Results Viewer"
+        title: "Results Viewer",
+        error: req.query.error
     });
 });
 
