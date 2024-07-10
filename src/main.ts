@@ -6,6 +6,7 @@ import path from 'path';
 const app = express();
 
 const ordinalRules = new Intl.PluralRules('en', { type: 'ordinal' });
+const cdnBase = process.env.NODE_ENV == "production" ? "https://cdn.byba.online" : "https://dev.cdn.byba.online";
 
 app.engine("hbs", engine({
     extname: ".hbs", helpers: {
@@ -25,7 +26,8 @@ app.engine("hbs", engine({
 
             return `${number}th`;
         },
-        eq: (val1: any, val2: any, opts: Handlebars.HelperOptions) => val1 == val2 ? opts.fn(this) : opts.inverse(this)
+        eq: (val1: any, val2: any, opts: Handlebars.HelperOptions) => val1 == val2 ? opts.fn(this) : opts.inverse(this),
+        cdnLink: (filename: string) => `${cdnBase}/${filename}`
     }
 }));
 app.set("view engine", "hbs");
@@ -131,4 +133,4 @@ app.use((_, res) => res.status(404).render("error", {
 }));
 
 const port = parseInt(process.env.PORT ?? "0");
-app.listen(port, () => `Listening on port ${port}`);
+app.listen(port, () => console.log(`Listening on port ${port}`));

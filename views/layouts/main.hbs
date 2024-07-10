@@ -3,84 +3,17 @@
 
     <head>
         <meta charset="UTF-8">
-        <link rel="icon" href="https://cdn.byba.online/favicon.ico">
-        <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.byba.online/apple-touch-icon.png">
-        <link rel="icon" type="image/png" sizes="32x32" href="https://cdn.byba.online/favicon-32x32.png">
-        <link rel="icon" type="image/png" sizes="16x16" href="https://cdn.byba.online/favicon-16x16.png">
+        <link rel="icon" href="{{cdnLink 'favicon.ico'}}">
+        <link rel="apple-touch-icon" sizes="180x180" href="{{cdnLink 'apple-touch-icon.png'}}">
+        <link rel="icon" type="image/png" sizes="32x32" href="{{cdnLink 'favicon-32x32.png'}}">
+        <link rel="icon" type="image/png" sizes="16x16" href="{{cdnLink 'favicon-16x16.png'}}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="https://cdn.byba.online/core.css" />
-        <link rel="stylesheet" href="https://cdn.byba.online/branding.css" />
+        <link rel="stylesheet" href="{{cdnLink 'main.min.css'}}" />
         <title>{{title}} | British Youth Band Association</title>
         <style>
             header {
-                background-color: var(--primary-colour);
-                color: var(--primary-text-colour);
-                margin-bottom: 2rem;
                 text-align: center;
                 padding: .5rem;
-            }
-
-            h6,
-            h5,
-            h4,
-            h3,
-            h2,
-            h1 {
-                margin-top: 0;
-                margin-bottom: .5rem;
-                font-weight: 500
-            }
-
-            label {
-                margin-left: .75rem;
-                margin-bottom: .3rem;
-                display: block;
-                text-align: start
-            }
-
-            input:not([type=checkbox]),
-            textarea,
-            select {
-                display: block;
-                width: 100%;
-                padding: .5rem .75rem;
-                font-size: 1rem;
-                border-radius: 10px;
-                margin: .1rem 0;
-                border-style: solid;
-                border-color: #0000001a
-            }
-
-            button {
-                padding: .5rem 1rem;
-                font-size: 1.25rem;
-                border-radius: 10px;
-                border-color: #0000001a;
-                cursor: pointer
-            }
-
-            button:active {
-                background-image: linear-gradient(#fff3 0, #fff3 0)
-            }
-
-            button.primary {
-                background-color: var(--primary-colour);
-                color: var(--primary-text-colour)
-            }
-
-            .error:not(button),
-            .success:not(button),
-            .info,
-            .warning {
-                padding: 1rem;
-                border-radius: 5px;
-                text-align: center;
-                margin-bottom: 1rem;
-            }
-
-            .error {
-                background-color: var(--error-colour);
-                color: var(--error-text-colour);
             }
 
             img {
@@ -90,14 +23,6 @@
 
             section {
                 margin-top: 3rem;
-            }
-
-            .d-none{
-                display: none;
-            }
-
-            .mt{
-                margin-top: 1rem;
             }
         </style>
     </head>
